@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author Arte Porã
+ * @author PC
  */
 public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
@@ -21,8 +21,8 @@ JDlgUsuarios jDlgUsuarios;
             setLocationRelativeTo(null);
     }
 
-        public void setJDlgUsuarios(JDlgUsuarios jDlgUsuarios){
-    this.jDlgUsuarios = jDlgUsuarios;
+    public void setJDlgUsuarios(JDlgUsuarios jDlgUsuarios){
+        this.jDlgUsuarios = jDlgUsuarios;
     }
 
     /**

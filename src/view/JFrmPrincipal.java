@@ -6,7 +6,7 @@ package view;
 
 /**
  *
- * @author Arte Porã
+ * @author pc
  */
 public class JFrmPrincipal extends javax.swing.JFrame {
 
