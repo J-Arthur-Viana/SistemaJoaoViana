@@ -254,7 +254,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-
+ Util.perguntar("Você deseja excluir?");
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jChbAtivo, jFmtSalario);  
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
