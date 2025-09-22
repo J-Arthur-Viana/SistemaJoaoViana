@@ -257,9 +257,9 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel
-                , jFmtDataDeNascimento, jChbAtivo, jBtnConfirmar, jBtnCancelar, jPwfSenha);
+       Util.habilitar( true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataDeNascimento, jPwfSenha, jCboNivel, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCboNivel, jFmtCpf, jChbAtivo, jFmtDataDeNascimento, jPwfSenha);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -271,7 +271,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-
+                Util.perguntar("Você deseja excluir?");
+                Util.limpar(jTxtNome, jTxtCodigo, jTxtNome, jTxtApelido, jFmtDataDeNascimento, jFmtCpf, jCboNivel, jChbAtivo, jPwfSenha);  
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 

@@ -34,7 +34,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuUsuarios = new javax.swing.JMenuItem();
         jMnuProdutos = new javax.swing.JMenuItem();
         jMnuClientes = new javax.swing.JMenuItem();
-        jMnuVendedores = new javax.swing.JMenuItem();
+        jMnuFuncionarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuSair = new javax.swing.JMenuItem();
         jMnuMovimento = new javax.swing.JMenu();
@@ -85,17 +85,17 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMnuCadastros.add(jMnuClientes);
 
-        jMnuVendedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuVendedores.setBackground(new java.awt.Color(51, 204, 255));
-        jMnuVendedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vendedor.png"))); // NOI18N
-        jMnuVendedores.setMnemonic('c');
-        jMnuVendedores.setText("Vendedores");
-        jMnuVendedores.addActionListener(new java.awt.event.ActionListener() {
+        jMnuFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMnuFuncionarios.setBackground(new java.awt.Color(51, 204, 255));
+        jMnuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vendedor.png"))); // NOI18N
+        jMnuFuncionarios.setMnemonic('c');
+        jMnuFuncionarios.setText("Funcionarios");
+        jMnuFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnuVendedoresActionPerformed(evt);
+                jMnuFuncionariosActionPerformed(evt);
             }
         });
-        jMnuCadastros.add(jMnuVendedores);
+        jMnuCadastros.add(jMnuFuncionarios);
         jMnuCadastros.add(jSeparator1);
 
         jMnuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -168,11 +168,11 @@ jDlgProdutos.setVisible(true);
    
     }//GEN-LAST:event_jMnuPedidosActionPerformed
 
-    private void jMnuVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendedoresActionPerformed
+    private void jMnuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFuncionariosActionPerformed
         // TODO add your handling code here:
-         JDlgFuncionarios jDlgVendedores = new JDlgFuncionarios(this, true);
-jDlgVendedores.setVisible(true);
-    }//GEN-LAST:event_jMnuVendedoresActionPerformed
+         JDlgFuncionarios jDlgFuncionarios = new JDlgFuncionarios(this, true);
+jDlgFuncionarios.setVisible(true);
+    }//GEN-LAST:event_jMnuFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,12 +214,12 @@ jDlgVendedores.setVisible(true);
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMnuCadastros;
     private javax.swing.JMenuItem jMnuClientes;
+    private javax.swing.JMenuItem jMnuFuncionarios;
     private javax.swing.JMenu jMnuMovimento;
     private javax.swing.JMenuItem jMnuPedidos;
     private javax.swing.JMenuItem jMnuProdutos;
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
-    private javax.swing.JMenuItem jMnuVendedores;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
