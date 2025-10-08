@@ -1,8 +1,8 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,11 +28,11 @@ public class JatProdutos  implements java.io.Serializable {
      private int jatIdProdutos;
      private String jatNome;
      private String jatModelo;
-     private BigDecimal jatValor;
+     private double jatValor;
      private String jatTipo;
-     private Character jatAtivo;
+     private String jatAtivo;
      private Date jatGarantia;
-     private Set jatVendasProdutoses = new HashSet(0);
+
 
     public JatProdutos() {
     }
@@ -41,7 +41,7 @@ public class JatProdutos  implements java.io.Serializable {
     public JatProdutos(int jatIdProdutos) {
         this.jatIdProdutos = jatIdProdutos;
     }
-    public JatProdutos(int jatIdProdutos, String jatNome, String jatModelo, BigDecimal jatValor, String jatTipo, Character jatAtivo, Date jatGarantia, Set jatVendasProdutoses) {
+    public JatProdutos(int jatIdProdutos, String jatNome, String jatModelo, double jatValor, String jatTipo, String jatAtivo, Date jatGarantia) {
        this.jatIdProdutos = jatIdProdutos;
        this.jatNome = jatNome;
        this.jatModelo = jatModelo;
@@ -49,7 +49,7 @@ public class JatProdutos  implements java.io.Serializable {
        this.jatTipo = jatTipo;
        this.jatAtivo = jatAtivo;
        this.jatGarantia = jatGarantia;
-       this.jatVendasProdutoses = jatVendasProdutoses;
+       
     }
    
      @Id 
@@ -86,11 +86,11 @@ public class JatProdutos  implements java.io.Serializable {
 
     
     @Column(name="jat_valor", precision=7)
-    public BigDecimal getJatValor() {
+    public double getJatValor() {
         return this.jatValor;
     }
     
-    public void setJatValor(BigDecimal jatValor) {
+    public void setJatValor(double jatValor) {
         this.jatValor = jatValor;
     }
 
@@ -106,11 +106,11 @@ public class JatProdutos  implements java.io.Serializable {
 
     
     @Column(name="jat_ativo", length=1)
-    public Character getJatAtivo() {
+    public String getJatAtivo() {
         return this.jatAtivo;
     }
     
-    public void setJatAtivo(Character jatAtivo) {
+    public void setJatAtivo(String jatAtivo) {
         this.jatAtivo = jatAtivo;
     }
 
@@ -124,14 +124,7 @@ public class JatProdutos  implements java.io.Serializable {
         this.jatGarantia = jatGarantia;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jatProdutos")
-    public Set getJatVendasProdutoses() {
-        return this.jatVendasProdutoses;
-    }
-    
-    public void setJatVendasProdutoses(Set jatVendasProdutoses) {
-        this.jatVendasProdutoses = jatVendasProdutoses;
-    }
+
 
 
 

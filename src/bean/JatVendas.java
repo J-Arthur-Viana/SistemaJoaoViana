@@ -1,8 +1,7 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,9 +30,9 @@ public class JatVendas  implements java.io.Serializable {
      private JatClientes jatClientes;
      private Date jatDataVenda;
      private String jatTipoVenda;
-     private BigDecimal jatValorVenda;
+     private double jatValorVenda;
      private String jatFormaPagamento;
-     private Set jatVendasProdutoses = new HashSet(0);
+    
 
     public JatVendas() {
     }
@@ -42,14 +41,14 @@ public class JatVendas  implements java.io.Serializable {
     public JatVendas(int jatIdVendas) {
         this.jatIdVendas = jatIdVendas;
     }
-    public JatVendas(int jatIdVendas, JatClientes jatClientes, Date jatDataVenda, String jatTipoVenda, BigDecimal jatValorVenda, String jatFormaPagamento, Set jatVendasProdutoses) {
+    public JatVendas(int jatIdVendas, JatClientes jatClientes, Date jatDataVenda, String jatTipoVenda, double jatValorVenda, String jatFormaPagamento) {
        this.jatIdVendas = jatIdVendas;
        this.jatClientes = jatClientes;
        this.jatDataVenda = jatDataVenda;
        this.jatTipoVenda = jatTipoVenda;
        this.jatValorVenda = jatValorVenda;
        this.jatFormaPagamento = jatFormaPagamento;
-       this.jatVendasProdutoses = jatVendasProdutoses;
+    
     }
    
      @Id 
@@ -96,11 +95,11 @@ public class JatVendas  implements java.io.Serializable {
 
     
     @Column(name="jat_valor_venda", precision=7)
-    public BigDecimal getJatValorVenda() {
+    public double getJatValorVenda() {
         return this.jatValorVenda;
     }
     
-    public void setJatValorVenda(BigDecimal jatValorVenda) {
+    public void setJatValorVenda(double jatValorVenda) {
         this.jatValorVenda = jatValorVenda;
     }
 
@@ -113,17 +112,6 @@ public class JatVendas  implements java.io.Serializable {
     public void setJatFormaPagamento(String jatFormaPagamento) {
         this.jatFormaPagamento = jatFormaPagamento;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jatVendas")
-    public Set getJatVendasProdutoses() {
-        return this.jatVendasProdutoses;
-    }
-    
-    public void setJatVendasProdutoses(Set jatVendasProdutoses) {
-        this.jatVendasProdutoses = jatVendasProdutoses;
-    }
-
-
 
 
 }

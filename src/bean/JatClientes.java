@@ -1,5 +1,5 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -36,10 +36,10 @@ public class JatClientes  implements java.io.Serializable {
      private String jatBairro;
      private String jatCidade;
      private String jatCep;
-     private String jatNivel;
+     private int jatNivel;
      private String jatAtivo;
      private Date jatDataCadastro;
-     private Set jatVendases = new HashSet(0);
+ 
 
     public JatClientes() {
     }
@@ -48,7 +48,7 @@ public class JatClientes  implements java.io.Serializable {
     public JatClientes(int jatIdClientes) {
         this.jatIdClientes = jatIdClientes;
     }
-    public JatClientes(int jatIdClientes, String jatNome, String jatApelido, String jatCpf, String jatSenha, String jatTelefone, Date jatDataDeNascimento, String jatEmail, String jatEndereco, String jatBairro, String jatCidade, String jatCep, String jatNivel, String jatAtivo, Date jatDataCadastro, Set jatVendases) {
+    public JatClientes(int jatIdClientes, String jatNome, String jatApelido, String jatCpf, String jatSenha, String jatTelefone, Date jatDataDeNascimento, String jatEmail, String jatEndereco, String jatBairro, String jatCidade, String jatCep, int jatNivel, String jatAtivo, Date jatDataCadastro, Set jatVendases) {
        this.jatIdClientes = jatIdClientes;
        this.jatNome = jatNome;
        this.jatApelido = jatApelido;
@@ -64,7 +64,7 @@ public class JatClientes  implements java.io.Serializable {
        this.jatNivel = jatNivel;
        this.jatAtivo = jatAtivo;
        this.jatDataCadastro = jatDataCadastro;
-       this.jatVendases = jatVendases;
+     
     }
    
      @Id 
@@ -190,12 +190,12 @@ public class JatClientes  implements java.io.Serializable {
     }
 
     
-    @Column(name="jat_nivel", length=10)
-    public String getJatNivel() {
+    @Column(name="jat_nivel", length=15)
+    public int getJatNivel() {
         return this.jatNivel;
     }
     
-    public void setJatNivel(String jatNivel) {
+    public void setJatNivel(int jatNivel) {
         this.jatNivel = jatNivel;
     }
 
@@ -218,18 +218,6 @@ public class JatClientes  implements java.io.Serializable {
     public void setJatDataCadastro(Date jatDataCadastro) {
         this.jatDataCadastro = jatDataCadastro;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="jatClientes")
-    public Set getJatVendases() {
-        return this.jatVendases;
-    }
-    
-    public void setJatVendases(Set jatVendases) {
-        this.jatVendases = jatVendases;
-    }
-
-
-
 
 }
 

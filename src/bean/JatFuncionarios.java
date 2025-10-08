@@ -1,8 +1,8 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,7 +23,7 @@ public class JatFuncionarios  implements java.io.Serializable {
      private String jatTelefone;
      private String jatCpf;
      private String jatTurno;
-     private BigDecimal jatSalario;
+     private double jatSalario;
      private String jatEndereco;
 
     public JatFuncionarios() {
@@ -33,7 +33,7 @@ public class JatFuncionarios  implements java.io.Serializable {
     public JatFuncionarios(int jatIdFuncionario) {
         this.jatIdFuncionario = jatIdFuncionario;
     }
-    public JatFuncionarios(int jatIdFuncionario, String jatNome, String jatTelefone, String jatCpf, String jatTurno, BigDecimal jatSalario, String jatEndereco) {
+    public JatFuncionarios(int jatIdFuncionario, String jatNome, String jatTelefone, String jatCpf, String jatTurno, double jatSalario, String jatEndereco) {
        this.jatIdFuncionario = jatIdFuncionario;
        this.jatNome = jatNome;
        this.jatTelefone = jatTelefone;
@@ -97,11 +97,11 @@ public class JatFuncionarios  implements java.io.Serializable {
 
     
     @Column(name="jat_salario", precision=7)
-    public BigDecimal getJatSalario() {
+    public double getJatSalario() {
         return this.jatSalario;
     }
     
-    public void setJatSalario(BigDecimal jatSalario) {
+    public void setJatSalario(double jatSalario) {
         this.jatSalario = jatSalario;
     }
 

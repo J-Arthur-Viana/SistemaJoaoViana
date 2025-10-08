@@ -73,21 +73,10 @@ public class Util {
     }
 
     public static Date strToDate(String data) {
-        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
-        datando.setLenient(false);
-        try {
-            return datando.parse(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+      return null;
     }
 
     public static String dateToStr(Date data) {
-        if (data == null) {
-            return "";
-        }
-        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
-        return datando.format(data);
+     return null;
     }
 }

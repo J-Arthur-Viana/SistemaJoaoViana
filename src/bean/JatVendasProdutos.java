@@ -1,8 +1,8 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +24,8 @@ public class JatVendasProdutos  implements java.io.Serializable {
      private int jatIdVendasProdutos;
      private JatProdutos jatProdutos;
      private JatVendas jatVendas;
-     private Integer jatQuantidade;
-     private BigDecimal jatValorUnitario;
+     private int jatQuantidade;
+     private double jatValorUnitario;
 
     public JatVendasProdutos() {
     }
@@ -34,7 +34,7 @@ public class JatVendasProdutos  implements java.io.Serializable {
     public JatVendasProdutos(int jatIdVendasProdutos) {
         this.jatIdVendasProdutos = jatIdVendasProdutos;
     }
-    public JatVendasProdutos(int jatIdVendasProdutos, JatProdutos jatProdutos, JatVendas jatVendas, Integer jatQuantidade, BigDecimal jatValorUnitario) {
+    public JatVendasProdutos(int jatIdVendasProdutos, JatProdutos jatProdutos, JatVendas jatVendas, int jatQuantidade, double jatValorUnitario) {
        this.jatIdVendasProdutos = jatIdVendasProdutos;
        this.jatProdutos = jatProdutos;
        this.jatVendas = jatVendas;
@@ -76,21 +76,21 @@ public class JatVendasProdutos  implements java.io.Serializable {
 
     
     @Column(name="jat_quantidade")
-    public Integer getJatQuantidade() {
+    public int getJatQuantidade() {
         return this.jatQuantidade;
     }
     
-    public void setJatQuantidade(Integer jatQuantidade) {
+    public void setJatQuantidade(int jatQuantidade) {
         this.jatQuantidade = jatQuantidade;
     }
 
     
     @Column(name="jat_valor_unitario", precision=7)
-    public BigDecimal getJatValorUnitario() {
+    public double getJatValorUnitario() {
         return this.jatValorUnitario;
     }
     
-    public void setJatValorUnitario(BigDecimal jatValorUnitario) {
+    public void setJatValorUnitario(double jatValorUnitario) {
         this.jatValorUnitario = jatValorUnitario;
     }
 

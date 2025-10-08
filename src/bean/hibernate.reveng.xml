@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_joao_viana"/>
-  <table-filter match-name="jat_produtos"/>
-  <table-filter match-name="jat_clientes"/>
-  <table-filter match-name="jat_funcionarios"/>
   <table-filter match-name="jat_vendas_produtos"/>
   <table-filter match-name="jat_usuarios"/>
+  <table-filter match-name="jat_funcionarios"/>
+  <table-filter match-name="jat_produtos"/>
   <table-filter match-name="jat_vendas"/>
+  <table-filter match-name="jat_clientes"/>
 </hibernate-reverse-engineering>

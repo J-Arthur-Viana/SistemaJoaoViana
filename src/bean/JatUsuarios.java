@@ -1,5 +1,5 @@
 package bean;
-// Generated 08/10/2025 15:35:01 by Hibernate Tools 4.3.1
+// Generated 08/10/2025 16:50:28 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -26,6 +26,7 @@ public class JatUsuarios  implements java.io.Serializable {
      private String jatCpf;
      private Date jatDataDeNascimento;
      private String jatSenha;
+     private int jatNivel;
      private String jatAtivo;
 
     public JatUsuarios() {
@@ -35,13 +36,14 @@ public class JatUsuarios  implements java.io.Serializable {
     public JatUsuarios(int jatIdUsuarios) {
         this.jatIdUsuarios = jatIdUsuarios;
     }
-    public JatUsuarios(int jatIdUsuarios, String jatNome, String jatApelido, String jatCpf, Date jatDataDeNascimento, String jatSenha, String jatAtivo) {
+    public JatUsuarios(int jatIdUsuarios, String jatNome, String jatApelido, String jatCpf, Date jatDataDeNascimento, String jatSenha, int jatNivel, String jatAtivo) {
        this.jatIdUsuarios = jatIdUsuarios;
        this.jatNome = jatNome;
        this.jatApelido = jatApelido;
        this.jatCpf = jatCpf;
        this.jatDataDeNascimento = jatDataDeNascimento;
        this.jatSenha = jatSenha;
+       this.jatNivel = jatNivel;
        this.jatAtivo = jatAtivo;
     }
    
@@ -107,7 +109,14 @@ public class JatUsuarios  implements java.io.Serializable {
         this.jatSenha = jatSenha;
     }
 
+     @Column(name="jat_nivel", length=15)
+    public int getJatNivel() {
+        return this.jatNivel;
+    }
     
+    public void setJatNivel(int jatNivel) {
+        this.jatNivel = jatNivel;
+    }
     @Column(name="jat_ativo", length=10)
     public String getJatAtivo() {
         return this.jatAtivo;
