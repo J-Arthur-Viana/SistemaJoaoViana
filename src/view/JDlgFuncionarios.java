@@ -5,6 +5,8 @@
  */
 package view;
 
+import bean.JatFuncionarios;
+import dao.FuncionariosDAO;
 import tools.Util;
  
 
@@ -15,9 +17,7 @@ import tools.Util;
  */
 public class JDlgFuncionarios extends javax.swing.JDialog {
 
-
-
-
+      private boolean incluir;
     
     public JDlgFuncionarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -25,9 +25,33 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         setTitle("Cadastro de Usuários");
         setLocationRelativeTo(null);
         
-        Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno
-                , jChbAtivo, jFmtSalario, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf
+                , jFmtSalario, jBtnConfirmar, jBtnCancelar);
 
+    }
+        public JatFuncionarios viewBean() {
+        JatFuncionarios funcionarios = new JatFuncionarios();
+        funcionarios.setJatIdFuncionario(Util.strToInt(jTxtCodigo.getText()));
+        funcionarios.setJatNome(jTxtNome.getText());
+        funcionarios.setJatEndereco(jTxtEndereco.getText());
+        funcionarios.setJatTelefone(jFmtTelefone.getText());
+        funcionarios.setJatTurno(jCboTurno.getSelectedIndex());
+        funcionarios.setJatSalario(Util.strToInt(jFmtSalario.getText()));
+        funcionarios.setJatCpf(jFmtCpf.getText());
+        
+        return funcionarios;
+    }
+    
+    public void beanView(JatFuncionarios funcionarios) {
+        jTxtCodigo.setText(Util.intToStr(funcionarios.getJatIdFuncionario())); 
+        jTxtNome.setText(funcionarios.getJatNome());
+        jTxtEndereco.setText(funcionarios.getJatEndereco());
+        jFmtCpf.setText(funcionarios.getJatCpf());
+        jFmtTelefone.setText(funcionarios.getJatTelefone());
+        jFmtCpf.setText(funcionarios.getJatCpf());
+        jFmtSalario.setText(Util.intToStr(funcionarios.getJatSalario()));
+       
+        
     }
     
 
@@ -51,7 +75,6 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jFmtTelefone = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jChbAtivo = new javax.swing.JCheckBox();
         jCboTurno = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jBtnIncluir = new javax.swing.JButton();
@@ -61,6 +84,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jBtnCancelar = new javax.swing.JButton();
         jBtnPesquisar = new javax.swing.JButton();
         jFmtSalario = new javax.swing.JFormattedTextField();
+        jFmtCpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,7 +119,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("Ativo");
+        jLabel8.setText("Cpf");
 
         jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/incluir.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
@@ -151,31 +175,38 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFmtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jFmtSalario))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 265, Short.MAX_VALUE))
+                            .addComponent(jTxtNome)
+                            .addComponent(jTxtEndereco))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jFmtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(jLabel6)
+                            .addComponent(jFmtSalario))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jCboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(110, 110, 110)
-                        .addComponent(jChbAtivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addGap(0, 117, Short.MAX_VALUE))
-                    .addComponent(jTxtNome)
-                    .addComponent(jTxtEndereco))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jCboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76))))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jBtnIncluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,21 +237,22 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTxtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jChbAtivo)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFmtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCboTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFmtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir)
                     .addComponent(jBtnAlterar)
@@ -240,27 +272,36 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jChbAtivo, jBtnConfirmar, jBtnCancelar, jFmtSalario);
+        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jChbAtivo, jFmtSalario);
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf , jFmtSalario);
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jChbAtivo, jFmtSalario, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
         Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jChbAtivo, jFmtSalario);  
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jFmtCpf, jFmtSalario);  
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jChbAtivo, jBtnConfirmar, jBtnCancelar, jFmtSalario);
+         FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+            if (incluir == true){
+                funcionariosDAO.insert(viewBean());
+            }else{
+                funcionariosDAO.update(viewBean());
+            }
+            funcionariosDAO.insert(viewBean());
+        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
@@ -276,9 +317,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jChbAtivo, jBtnConfirmar, jBtnCancelar, jFmtSalario);
+        Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jChbAtivo, jFmtSalario);
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jFmtCpf, jFmtSalario);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtCodigoFocusLost
@@ -355,7 +396,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JComboBox<String> jCboTurno;
-    private javax.swing.JCheckBox jChbAtivo;
+    private javax.swing.JFormattedTextField jFmtCpf;
     private javax.swing.JFormattedTextField jFmtSalario;
     private javax.swing.JFormattedTextField jFmtTelefone;
     private javax.swing.JLabel jLabel1;

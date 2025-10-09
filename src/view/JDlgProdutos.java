@@ -6,7 +6,8 @@
 package view;
 
 import tools.Util;
- 
+import bean.JatProdutos;
+import dao.ProdutosDAO;
 
 
 /**
@@ -15,9 +16,7 @@ import tools.Util;
  */
 public class JDlgProdutos extends javax.swing.JDialog {
 
-
-
-
+    private boolean incluir;
     
     public JDlgProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -30,7 +29,36 @@ public class JDlgProdutos extends javax.swing.JDialog {
 
     }
     
-
+   public JatProdutos viewBean() {
+        JatProdutos produtos = new JatProdutos();
+        produtos.setJatIdProdutos(Util.strToInt(jTxtCodigo.getText()));
+        produtos.setJatNome(jTxtNome.getText());
+        produtos.setJatModelo(jTxtModelo.getText());
+        produtos.setJatValor(Util.strToInt(jFmtValor.getText()));
+        produtos.setJatGarantia(Util.strToDate(jFmtGarantia.getText()));
+        produtos.setJatTipo(jTxtTipo.getText());
+        if (jChbAtivo.isSelected() == true){
+            produtos.setJatAtivo("S");
+        } else {
+            produtos.setJatAtivo("N");            
+        }
+        return produtos;
+    }
+    
+    public void beanView(JatProdutos produtos) {
+        jTxtCodigo.setText(Util.intToStr(produtos.getJatIdProdutos())); 
+        jTxtNome.setText(produtos.getJatNome());
+        jTxtModelo.setText(produtos.getJatModelo());
+        jFmtValor.setText(Util.intToStr(produtos.getJatValor()));
+        jFmtGarantia.setText(Util.dateToStr(produtos.getJatGarantia()));
+        jTxtTipo.setText(produtos.getJatTipo());
+        if (produtos.getJatAtivo().equals("S") == true){
+            jChbAtivo.setSelected(true);
+        } else {
+            jChbAtivo.setSelected(false);
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,12 +264,14 @@ public class JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor,jTxtTipo, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo,jTxtTipo);
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
         Util.habilitar(true, jTxtNome, jTxtModelo,jFmtValor, jTxtTipo, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -253,6 +283,13 @@ public class JDlgProdutos extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+         ProdutosDAO produtosDAO = new ProdutosDAO();
+            if (incluir == true){
+               produtosDAO.insert(viewBean());
+            }else{
+                produtosDAO.update(viewBean());
+            }
+            produtosDAO.insert(viewBean());
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 

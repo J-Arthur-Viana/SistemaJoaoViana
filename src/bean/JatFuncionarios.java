@@ -22,8 +22,8 @@ public class JatFuncionarios  implements java.io.Serializable {
      private String jatNome;
      private String jatTelefone;
      private String jatCpf;
-     private String jatTurno;
-     private double jatSalario;
+     private int jatTurno;
+     private int jatSalario;
      private String jatEndereco;
 
     public JatFuncionarios() {
@@ -33,7 +33,7 @@ public class JatFuncionarios  implements java.io.Serializable {
     public JatFuncionarios(int jatIdFuncionario) {
         this.jatIdFuncionario = jatIdFuncionario;
     }
-    public JatFuncionarios(int jatIdFuncionario, String jatNome, String jatTelefone, String jatCpf, String jatTurno, double jatSalario, String jatEndereco) {
+    public JatFuncionarios(int jatIdFuncionario, String jatNome, String jatTelefone, String jatCpf, int jatTurno, int jatSalario, String jatEndereco) {
        this.jatIdFuncionario = jatIdFuncionario;
        this.jatNome = jatNome;
        this.jatTelefone = jatTelefone;
@@ -87,21 +87,21 @@ public class JatFuncionarios  implements java.io.Serializable {
 
     
     @Column(name="jat_turno", length=10)
-    public String getJatTurno() {
+    public int getJatTurno() {
         return this.jatTurno;
     }
     
-    public void setJatTurno(String jatTurno) {
+    public void setJatTurno(int jatTurno) {
         this.jatTurno = jatTurno;
     }
 
     
     @Column(name="jat_salario", precision=7)
-    public double getJatSalario() {
+    public int getJatSalario() {
         return this.jatSalario;
     }
     
-    public void setJatSalario(double jatSalario) {
+    public void setJatSalario(int jatSalario) {
         this.jatSalario = jatSalario;
     }
 
