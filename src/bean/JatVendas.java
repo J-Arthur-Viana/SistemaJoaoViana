@@ -28,6 +28,7 @@ public class JatVendas  implements java.io.Serializable {
 
      private int jatIdVendas;
      private JatClientes jatClientes;
+     private JatFuncionarios jatFuncionarios;
      private Date jatDataVenda;
      private String jatTipoVenda;
      private double jatValorVenda;
@@ -41,9 +42,10 @@ public class JatVendas  implements java.io.Serializable {
     public JatVendas(int jatIdVendas) {
         this.jatIdVendas = jatIdVendas;
     }
-    public JatVendas(int jatIdVendas, JatClientes jatClientes, Date jatDataVenda, String jatTipoVenda, double jatValorVenda, String jatFormaPagamento) {
+    public JatVendas(int jatIdVendas, JatClientes jatClientes,JatFuncionarios jatFuncionarios, Date jatDataVenda, String jatTipoVenda, double jatValorVenda, String jatFormaPagamento) {
        this.jatIdVendas = jatIdVendas;
        this.jatClientes = jatClientes;
+       this.jatFuncionarios = jatFuncionarios;
        this.jatDataVenda = jatDataVenda;
        this.jatTipoVenda = jatTipoVenda;
        this.jatValorVenda = jatValorVenda;
@@ -72,6 +74,16 @@ public class JatVendas  implements java.io.Serializable {
     public void setJatClientes(JatClientes jatClientes) {
         this.jatClientes = jatClientes;
     }
+  @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="jat_fk_id_funcionarios")
+    public JatFuncionarios getJatFuncionarios() {
+        return this.jatFuncionarios;
+    }
+    
+    public void setJatFuncionarios(JatFuncionarios jatFuncionarios) {
+        this.jatFuncionarios = jatFuncionarios;
+    }
+ 
 
     @Temporal(TemporalType.DATE)
     @Column(name="jat_data_venda", length=10)

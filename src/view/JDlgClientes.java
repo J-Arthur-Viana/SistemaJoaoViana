@@ -403,7 +403,7 @@ public class JDlgClientes extends javax.swing.JDialog {
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jTxtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jTxtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo);
-      incluir = true; 
+        incluir = true; 
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -437,7 +437,7 @@ public class JDlgClientes extends javax.swing.JDialog {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here: 
         JDlgClientesPesquisar jDlgClientesPesquisar = new JDlgClientesPesquisar(null, true);
-        jDlgClientesPesquisar.setJDlgClientes(this);
+        jDlgClientesPesquisar.setTelaAnterior(this);
         jDlgClientesPesquisar.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

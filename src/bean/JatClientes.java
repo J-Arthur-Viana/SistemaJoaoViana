@@ -219,6 +219,11 @@ public class JatClientes  implements java.io.Serializable {
         this.jatDataCadastro = jatDataCadastro;
     }
 
+    @Override
+    public String toString() {
+        return this.jatNome;
+    }
+
 }
 
 

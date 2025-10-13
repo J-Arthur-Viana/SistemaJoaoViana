@@ -115,7 +115,10 @@ public class JatFuncionarios  implements java.io.Serializable {
         this.jatEndereco = jatEndereco;
     }
 
-
+ @Override
+    public String toString() {
+        return this.jatNome;
+    }
 
 
 }
