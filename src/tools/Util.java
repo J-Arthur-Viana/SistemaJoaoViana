@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package tools;
 
 import java.text.ParseException;
@@ -15,7 +19,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author User
+ * @author Lucas
  */
 public class Util {
 
@@ -73,10 +77,21 @@ public class Util {
     }
 
     public static Date strToDate(String data) {
-      return null;
+        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
+        datando.setLenient(false);
+        try {
+            return datando.parse(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public static String dateToStr(Date data) {
-     return null;
+        if (data == null) {
+            return "";
+        }
+        SimpleDateFormat datando = new SimpleDateFormat("dd/MM/yyyy");
+        return datando.format(data);
     }
 }

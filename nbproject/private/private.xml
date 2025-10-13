@@ -19,14 +19,18 @@
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgClientesPesquisar.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JFrmPrincipal.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgProdutosPesquisar.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/ControllerClientes.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/dao/ClientesDAO.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/bean/JatVendas.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgVendas.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/tools/Util.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/dao/FuncionariosDAO.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/bean/JatVendasProdutos.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgUsuarios.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/dao/HibernateUtil.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/ControllerUsuarios.java</file>
+            <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgVendasProdutos.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/dao/VendasProdutosDAO.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SistemaJoaoViana/src/view/JDlgFuncionariosPesquisar.java</file>
         </group>

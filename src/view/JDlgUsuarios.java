@@ -19,6 +19,7 @@ import tools.Util;
 public class JDlgUsuarios extends javax.swing.JDialog {
 
     private boolean incluir;
+    boolean pesquisado = false;
     
      public JDlgUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -307,8 +308,12 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.perguntar("Você deseja excluir?");
+         if (pesquisado == false) {
+            Util.mensagem("Você precisa pesquisar um usuário primeiro");
+        } else { 
+             Util.perguntar("Você deseja excluir?");
         Util.limpar(jTxtNome, jTxtCodigo, jTxtNome, jTxtApelido, jFmtDataDeNascimento, jFmtCpf, jCboNivel, jChbAtivo, jPwfSenha);  
+         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -331,7 +336,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         JDlgUsuariosPesquisar jDlgUsuariosPesquisar = new JDlgUsuariosPesquisar(null, true);
         jDlgUsuariosPesquisar.setTelaAnterior(this);
         jDlgUsuariosPesquisar.setVisible(true);
-
+        pesquisado = true;
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

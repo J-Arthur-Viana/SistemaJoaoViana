@@ -16,7 +16,7 @@ import tools.Util;
  * @author pc
  */
 public class JDlgFuncionarios extends javax.swing.JDialog {
-
+      boolean pesquisado = false;
       private boolean incluir;
     
     public JDlgFuncionarios(java.awt.Frame parent, boolean modal) {
@@ -287,8 +287,12 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.perguntar("Você deseja excluir?");
+         if (pesquisado == false) {
+            Util.mensagem("Você precisa pesquisar um usuário primeiro");
+        } else { 
+             Util.perguntar("Você deseja excluir?");
         Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jFmtCpf, jFmtSalario);  
+    }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -309,9 +313,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here: 
         JDlgFuncionariosPesquisar jDlgFuncionariosPesquisar = new JDlgFuncionariosPesquisar(null, true);
-        jDlgFuncionariosPesquisar.setJDlgFuncionarios(this);
+        jDlgFuncionariosPesquisar.setTelaAnterior(this);
         jDlgFuncionariosPesquisar.setVisible(true);
-                                         
+        pesquisado = true;
 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 

@@ -17,6 +17,7 @@ import dao.ProdutosDAO;
 public class JDlgProdutos extends javax.swing.JDialog {
 
     private boolean incluir;
+    boolean pesquisado = false;
     
     public JDlgProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -276,8 +277,12 @@ public class JDlgProdutos extends javax.swing.JDialog {
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo,jTxtTipo);  
+        if (pesquisado == false) {
+            Util.mensagem("Você precisa pesquisar um usuário primeiro");
+        } else { 
+             Util.perguntar("Você deseja excluir?");
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo,jTxtTipo); 
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -298,8 +303,9 @@ public class JDlgProdutos extends javax.swing.JDialog {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         // TODO add your handling code here: 
         JDlgProdutosPesquisar jDlgProdutosPesquisar = new JDlgProdutosPesquisar(null, true);
-        jDlgProdutosPesquisar.setJDlgProdutos(this);
+        jDlgProdutosPesquisar.setTelaAnterior(this);
         jDlgProdutosPesquisar.setVisible(true);
+        pesquisado = true;
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

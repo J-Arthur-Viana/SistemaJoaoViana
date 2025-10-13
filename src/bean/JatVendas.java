@@ -30,9 +30,9 @@ public class JatVendas  implements java.io.Serializable {
      private JatClientes jatClientes;
      private JatFuncionarios jatFuncionarios;
      private Date jatDataVenda;
-     private String jatTipoVenda;
+     private int jatTipoVenda;
      private double jatValorVenda;
-     private String jatFormaPagamento;
+     private int jatFormaPagamento;
     
 
     public JatVendas() {
@@ -42,7 +42,7 @@ public class JatVendas  implements java.io.Serializable {
     public JatVendas(int jatIdVendas) {
         this.jatIdVendas = jatIdVendas;
     }
-    public JatVendas(int jatIdVendas, JatClientes jatClientes,JatFuncionarios jatFuncionarios, Date jatDataVenda, String jatTipoVenda, double jatValorVenda, String jatFormaPagamento) {
+    public JatVendas(int jatIdVendas, JatClientes jatClientes,JatFuncionarios jatFuncionarios, Date jatDataVenda, int jatTipoVenda, double jatValorVenda, int jatFormaPagamento) {
        this.jatIdVendas = jatIdVendas;
        this.jatClientes = jatClientes;
        this.jatFuncionarios = jatFuncionarios;
@@ -97,11 +97,11 @@ public class JatVendas  implements java.io.Serializable {
 
     
     @Column(name="jat_tipo_venda", length=20)
-    public String getJatTipoVenda() {
+    public int getJatTipoVenda() {
         return this.jatTipoVenda;
     }
     
-    public void setJatTipoVenda(String jatTipoVenda) {
+    public void setJatTipoVenda(int jatTipoVenda) {
         this.jatTipoVenda = jatTipoVenda;
     }
 
@@ -117,11 +117,11 @@ public class JatVendas  implements java.io.Serializable {
 
     
     @Column(name="jat_forma_pagamento", length=10)
-    public String getJatFormaPagamento() {
+    public int getJatFormaPagamento() {
         return this.jatFormaPagamento;
     }
     
-    public void setJatFormaPagamento(String jatFormaPagamento) {
+    public void setJatFormaPagamento(int jatFormaPagamento) {
         this.jatFormaPagamento = jatFormaPagamento;
     }
 
