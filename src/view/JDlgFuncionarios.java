@@ -36,7 +36,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         funcionarios.setJatEndereco(jTxtEndereco.getText());
         funcionarios.setJatTelefone(jFmtTelefone.getText());
         funcionarios.setJatTurno(jCboTurno.getSelectedIndex());
-        funcionarios.setJatSalario(Util.strToInt(jFmtSalario.getText()));
+        funcionarios.setJatSalario(Util.strToDouble(jFmtSalario.getText()));
         funcionarios.setJatCpf(jFmtCpf.getText());
         
         return funcionarios;
@@ -49,7 +49,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jFmtCpf.setText(funcionarios.getJatCpf());
         jFmtTelefone.setText(funcionarios.getJatTelefone());
         jFmtCpf.setText(funcionarios.getJatCpf());
-        jFmtSalario.setText(Util.intToStr(funcionarios.getJatSalario()));
+        jFmtSalario.setText(Util.doubleToStr(funcionarios.getJatSalario()));
        
         
     }
@@ -107,6 +107,13 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jLabel3.setText("Endereço");
 
         jLabel4.setText("Telefone");
+
+        try {
+            jFmtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFmtTelefone.setText("(  )     -    ");
 
         jLabel6.setText("Salario");
 
@@ -168,6 +175,12 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                 jBtnPesquisarActionPerformed(evt);
             }
         });
+
+        try {
+            jFmtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

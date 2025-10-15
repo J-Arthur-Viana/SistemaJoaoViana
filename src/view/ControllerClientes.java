@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lucas
+ * @author pc
  */
 public class ControllerClientes extends AbstractTableModel {
 

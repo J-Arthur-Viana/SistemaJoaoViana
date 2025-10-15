@@ -158,15 +158,20 @@ public class JDlgClientes extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFmtCpf.setText("   .   .   -  ");
+        jFmtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtCpfActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Data de Nascimento");
 
         try {
-            jFmtDataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-####")));
+            jFmtDataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFmtDataDeNascimento.setText("  /  /    ");
 
         jLabel6.setText("Senha");
 
@@ -250,12 +255,11 @@ public class JDlgClientes extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFmtDataDeCadastro.setText("  /  /    ");
 
         jLabel14.setText("Email");
 
         try {
-            jFmtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-####")));
+            jFmtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -508,6 +512,10 @@ public class JDlgClientes extends javax.swing.JDialog {
     private void jFmtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtTelefoneActionPerformed
+
+    private void jFmtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtCpfActionPerformed
 
     /**
      * @param args the command line arguments

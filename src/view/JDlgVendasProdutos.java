@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author u07834027166
+ * @author pc
  */
 public class JDlgVendasProdutos extends javax.swing.JDialog {
 

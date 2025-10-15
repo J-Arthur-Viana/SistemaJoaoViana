@@ -35,7 +35,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
         produtos.setJatIdProdutos(Util.strToInt(jTxtCodigo.getText()));
         produtos.setJatNome(jTxtNome.getText());
         produtos.setJatModelo(jTxtModelo.getText());
-        produtos.setJatValor(Util.strToInt(jFmtValor.getText()));
+        produtos.setJatValor(Util.strToDouble(jFmtValor.getText()));
         produtos.setJatGarantia(Util.strToDate(jFmtGarantia.getText()));
         produtos.setJatTipo(jTxtTipo.getText());
         if (jChbAtivo.isSelected() == true){
@@ -50,7 +50,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
         jTxtCodigo.setText(Util.intToStr(produtos.getJatIdProdutos())); 
         jTxtNome.setText(produtos.getJatNome());
         jTxtModelo.setText(produtos.getJatModelo());
-        jFmtValor.setText(Util.intToStr(produtos.getJatValor()));
+        jFmtValor.setText(Util.doubleToStr(produtos.getJatValor()));
         jFmtGarantia.setText(Util.dateToStr(produtos.getJatGarantia()));
         jTxtTipo.setText(produtos.getJatTipo());
         if (produtos.getJatAtivo().equals("S") == true){
@@ -114,6 +114,13 @@ public class JDlgProdutos extends javax.swing.JDialog {
         Valor.setText("Valor");
 
         jLabel5.setText("Garantia");
+
+        try {
+            jFmtGarantia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFmtGarantia.setText("  /  /    ");
 
         jLabel6.setText("Tipo");
 

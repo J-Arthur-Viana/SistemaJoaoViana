@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Marcos
+ * @author pc
  */
 public class JDlgFuncionariosPesquisar extends javax.swing.JDialog {
 

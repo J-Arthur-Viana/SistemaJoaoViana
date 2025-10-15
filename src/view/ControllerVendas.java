@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lucas
+ * @author pc
  */
 public class ControllerVendas extends AbstractTableModel {
     
@@ -60,13 +60,13 @@ public class ControllerVendas extends AbstractTableModel {
             return "Código";
         }
         if (column == 1) {
-            return "Nome";
+            return "Forma de pagamento";
         }
         if (column == 2) {
-            return "CPF";
+            return "Data da venda";
         }
         if (column == 3) {
-            return "Apelido";
+            return "Valor da venda";
         }else {
             return "";
         }

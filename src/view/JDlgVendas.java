@@ -16,7 +16,7 @@ import bean.JatVendas;
 
 /**
  *
- * @author u07834027166
+ * @author pc
  */
 public class JDlgVendas extends javax.swing.JDialog {
     
@@ -31,8 +31,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         initComponents();
         setTitle("Lista de JatVendas");
         setLocationRelativeTo(null);
-        Util.habilitar(true, jTxtCodigo, jFmtData, jCboClientes, jCboFuncionario, jTxtTotal , jCboFormaDePagamento,jCboTipo,jBtnConfirmar, jBtnCancelar, jBtnIncluirProd, jBtnAlterarProd, jBtnExcluirProd);
-        Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+        Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboFuncionario, jTxtTotal , jCboFormaDePagamento,jCboTipo,jBtnConfirmar, jBtnCancelar, jBtnIncluirProd, jBtnAlterarProd, jBtnExcluirProd);
        
         ClientesDAO clientesDAO = new ClientesDAO();
         List lista = (List) clientesDAO.listAll();
@@ -114,6 +113,12 @@ public class JDlgVendas extends javax.swing.JDialog {
         jLabel1.setText("Código");
 
         jLabel2.setText("Data");
+
+        try {
+            jFmtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel3.setText("Clientes");
 
@@ -204,7 +209,7 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         jCboFormaDePagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrega", "Retirada na loja" }));
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jBtnCancelar.setText("Cancelar");
@@ -403,7 +408,9 @@ public class JDlgVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-       
+        Util.habilitar(false, jTxtCodigo, jFmtData,jCboClientes, jCboFuncionario, jCboFormaDePagamento,jCboTipo, jBtnConfirmar, jBtnCancelar,jTxtTotal);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jFmtData,jCboClientes, jCboFuncionario, jCboFormaDePagamento,jCboTipo);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

@@ -121,7 +121,16 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
         jLabel4.setText("CPF");
 
+        jFmtCpf.setText("   .   .   -  ");
+
         jLabel5.setText("Data de Nascimento");
+
+        try {
+            jFmtDataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFmtDataDeNascimento.setText("  /  /    ");
 
         jLabel6.setText("Senha");
 

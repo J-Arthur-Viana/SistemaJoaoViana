@@ -28,7 +28,7 @@ public class JatProdutos  implements java.io.Serializable {
      private int jatIdProdutos;
      private String jatNome;
      private String jatModelo;
-     private int jatValor;
+     private double jatValor;
      private String jatTipo;
      private String jatAtivo;
      private Date jatGarantia;
@@ -41,7 +41,7 @@ public class JatProdutos  implements java.io.Serializable {
     public JatProdutos(int jatIdProdutos) {
         this.jatIdProdutos = jatIdProdutos;
     }
-    public JatProdutos(int jatIdProdutos, String jatNome, String jatModelo, int jatValor, String jatTipo, String jatAtivo, Date jatGarantia) {
+    public JatProdutos(int jatIdProdutos, String jatNome, String jatModelo, double jatValor, String jatTipo, String jatAtivo, Date jatGarantia) {
        this.jatIdProdutos = jatIdProdutos;
        this.jatNome = jatNome;
        this.jatModelo = jatModelo;
@@ -86,11 +86,11 @@ public class JatProdutos  implements java.io.Serializable {
 
     
     @Column(name="jat_valor", precision=7)
-    public int getJatValor() {
+    public double getJatValor() {
         return this.jatValor;
     }
     
-    public void setJatValor(int jatValor) {
+    public void setJatValor(double jatValor) {
         this.jatValor = jatValor;
     }
 

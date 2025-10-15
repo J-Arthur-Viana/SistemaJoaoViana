@@ -38,7 +38,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuSair = new javax.swing.JMenuItem();
         jMnuMovimento = new javax.swing.JMenu();
-        jMnuPedidos = new javax.swing.JMenuItem();
+        jMnuVendas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -114,16 +114,16 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuMovimento.setMnemonic('m');
         jMnuMovimento.setText("Movimentos");
 
-        jMnuPedidos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        jMnuPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produtos.png"))); // NOI18N
-        jMnuPedidos.setMnemonic('P');
-        jMnuPedidos.setText("Vendas");
-        jMnuPedidos.addActionListener(new java.awt.event.ActionListener() {
+        jMnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produtos.png"))); // NOI18N
+        jMnuVendas.setMnemonic('P');
+        jMnuVendas.setText("Vendas");
+        jMnuVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnuPedidosActionPerformed(evt);
+                jMnuVendasActionPerformed(evt);
             }
         });
-        jMnuMovimento.add(jMnuPedidos);
+        jMnuMovimento.add(jMnuVendas);
 
         jMenuBar1.add(jMnuMovimento);
 
@@ -164,14 +164,15 @@ jDlgClientes.setVisible(true);
 jDlgProdutos.setVisible(true);
     }//GEN-LAST:event_jMnuProdutosActionPerformed
 
-    private void jMnuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuPedidosActionPerformed
-   
-    }//GEN-LAST:event_jMnuPedidosActionPerformed
+    private void jMnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasActionPerformed
+       JDlgVendas jDlgVendas = new JDlgVendas(this, true);
+        jDlgVendas.setVisible(true);
+    }//GEN-LAST:event_jMnuVendasActionPerformed
 
     private void jMnuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFuncionariosActionPerformed
         // TODO add your handling code here:
          JDlgFuncionarios jDlgFuncionarios = new JDlgFuncionarios(this, true);
-jDlgFuncionarios.setVisible(true);
+         jDlgFuncionarios.setVisible(true);
     }//GEN-LAST:event_jMnuFuncionariosActionPerformed
 
     /**
@@ -216,10 +217,10 @@ jDlgFuncionarios.setVisible(true);
     private javax.swing.JMenuItem jMnuClientes;
     private javax.swing.JMenuItem jMnuFuncionarios;
     private javax.swing.JMenu jMnuMovimento;
-    private javax.swing.JMenuItem jMnuPedidos;
     private javax.swing.JMenuItem jMnuProdutos;
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
+    private javax.swing.JMenuItem jMnuVendas;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

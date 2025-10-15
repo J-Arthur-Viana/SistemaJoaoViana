@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lucas
+ * @author pc
  */
 public class ControllerFuncionarios extends AbstractTableModel {
     
@@ -63,10 +63,10 @@ public class ControllerFuncionarios extends AbstractTableModel {
             return "Nome";
         }
         if (column == 2) {
-            return "CPF";
+            return "Telefone";
         }
         if (column == 3) {
-            return "Apelido";
+            return "Cpf";
         }else {
             return "";
         }

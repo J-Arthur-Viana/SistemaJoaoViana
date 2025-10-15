@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Lucas
+ * @author pc
  */
 public class ControllerUsuarios extends AbstractTableModel {
     
