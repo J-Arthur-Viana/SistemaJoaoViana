@@ -22,7 +22,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     public JDlgFuncionarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Cadastro de Funcionarios");
         setLocationRelativeTo(null);
         
         Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf

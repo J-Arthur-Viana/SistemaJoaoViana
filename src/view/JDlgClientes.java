@@ -7,7 +7,6 @@ package view;
 
 import bean.JatClientes;
 import dao.ClientesDAO;
-import dao.UsuariosDAO;
 import tools.Util;
  
 
@@ -25,7 +24,7 @@ public class JDlgClientes extends javax.swing.JDialog {
     public JDlgClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
         
         Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,

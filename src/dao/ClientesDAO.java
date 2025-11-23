@@ -45,7 +45,7 @@ public class ClientesDAO extends AbstractDAO{
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JatClientes.class);
-        criteria.add(Restrictions.eq("idprodutos", codigo));
+        criteria.add(Restrictions.eq("jatIdClientes", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;

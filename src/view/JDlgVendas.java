@@ -31,7 +31,7 @@ public class JDlgVendas extends javax.swing.JDialog {
     public JDlgVendas(java.awt.Frame parent, boolean modal) {
        super(parent, modal);
         initComponents();
-        setTitle("Lista de JatVendas");
+        setTitle("Cadastro de vendas");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboFuncionario, jTxtTotal , jCboFormaDePagamento,jCboTipo,jBtnConfirmar, jBtnCancelar, jBtnIncluirProd, jBtnAlterarProd, jBtnExcluirProd);
        

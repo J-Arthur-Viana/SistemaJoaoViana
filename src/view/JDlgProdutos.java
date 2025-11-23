@@ -22,7 +22,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
     public JDlgProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Cadastro de Produtos");
         setLocationRelativeTo(null);
         
         Util.habilitar(false, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jTxtTipo

@@ -45,7 +45,7 @@ public class FuncionariosDAO extends AbstractDAO{
     public Object list(int codigo) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JatFuncionarios.class);
-        criteria.add(Restrictions.eq("idprodutos", codigo));
+        criteria.add(Restrictions.eq("jatIdFuncionarios", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
