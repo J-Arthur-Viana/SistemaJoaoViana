@@ -317,7 +317,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
             }else{
                 funcionariosDAO.update(viewBean());
             }
-            funcionariosDAO.insert(viewBean());
+         
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 

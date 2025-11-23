@@ -124,10 +124,10 @@ public class JatProdutos  implements java.io.Serializable {
         this.jatGarantia = jatGarantia;
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return this.jatNome;
+    }
 
 }
 

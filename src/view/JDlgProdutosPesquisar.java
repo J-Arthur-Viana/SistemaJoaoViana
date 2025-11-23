@@ -133,7 +133,7 @@ public class JDlgProdutosPesquisar extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
       // 
-       // if(jFmtValor){
+       // if(jFmtVmin =< && jFmtValorMax=>){
         JatProdutos produtos =  controllerProdutos.getBean( jTable1.getSelectedRow() );
         jDlgProdutos.beanView(produtos);
         this.setVisible(false);

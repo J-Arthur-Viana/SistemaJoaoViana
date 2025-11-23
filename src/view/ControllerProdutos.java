@@ -48,7 +48,7 @@ public class ControllerProdutos extends AbstractTableModel {
             return produtos.getJatModelo();
         }
         if (columnIndex == 3) {
-            return produtos.getJatTipo();
+            return produtos.getJatValor();
         }
         else {
             return "";
@@ -66,7 +66,7 @@ public class ControllerProdutos extends AbstractTableModel {
             return "Modelo";
         }
         if (column == 3) {
-            return "Tipo";
+            return "Valor";
         }else {
             return "";
         }

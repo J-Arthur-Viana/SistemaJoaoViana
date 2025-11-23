@@ -334,7 +334,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
             }else{
                 usuariosDAO.update(viewBean());
             }
-            usuariosDAO.insert(viewBean());
+            
             //usuariosDAO.insert(usuarios);
             Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataDeNascimento, jPwfSenha, jCboNivel, jChbAtivo, jBtnConfirmar, jBtnCancelar);
             Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);

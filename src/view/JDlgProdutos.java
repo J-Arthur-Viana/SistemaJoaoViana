@@ -301,7 +301,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
             }else{
                 produtosDAO.update(viewBean());
             }
-            produtosDAO.insert(viewBean());
+            
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
