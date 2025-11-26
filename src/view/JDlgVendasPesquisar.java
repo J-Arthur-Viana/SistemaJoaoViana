@@ -8,6 +8,7 @@ package view;
 import bean.JatVendas;
 import dao.VendasDAO;
 import java.util.List;
+import tools.Util;
 
 /**
  *
@@ -25,10 +26,9 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Pesquisar Usuários");
+        VendasDAO vendasDao = new VendasDAO();
+        List lista = (List) vendasDao.listAll();
         controllerVendas = new ControllerVendas();
-        VendasDAO vendasDAO = new VendasDAO();
-        List lista = (List) vendasDAO.listAll();
         controllerVendas.setLista(lista);
         jTable1.setModel(controllerVendas);
     }
@@ -63,6 +63,11 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jBtnOk.setText("OK");
@@ -99,11 +104,21 @@ public class JDlgVendasPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
-        JatVendas vendas =  controllerVendas.getBean( jTable1.getSelectedRow() );
-        jDlgVendas.beanView(vendas);
+       if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
+        JatVendas usuarios =  (JatVendas) controllerVendas.getBean( jTable1.getSelectedRow() );
+        jDlgVendas.beanView(usuarios);
         this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+         if (evt.getClickCount() == 2){
+        jBtnOkActionPerformed(null);
+       }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -119,6 +119,17 @@ public class JatFuncionarios  implements java.io.Serializable {
     public String toString() {
         return this.jatNome;
     }
+ @Override
+    public boolean equals( Object object){
+        if(object instanceof JatFuncionarios) {
+            JatFuncionarios jatFuncionarios = (JatFuncionarios)object;
+            if(this.getJatIdFuncionario()== jatFuncionarios.getJatIdFuncionario()){
+                return true;
+            }
+    }
+
+        return false;
+    }
 
 
 }

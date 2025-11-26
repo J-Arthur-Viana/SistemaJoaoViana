@@ -223,6 +223,18 @@ public class JatClientes  implements java.io.Serializable {
     public String toString() {
         return this.jatNome;
     }
+        
+     @Override
+    public boolean equals( Object object){
+        if(object instanceof JatClientes) {
+            JatClientes jatClientes = (JatClientes)object;
+            if(this.getJatIdClientes()== jatClientes.getJatIdClientes()){
+                return true;
+            }
+    }
+
+        return false;
+    }
 
 }
 

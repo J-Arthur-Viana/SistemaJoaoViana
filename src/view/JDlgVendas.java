@@ -10,8 +10,10 @@ import java.util.List;
 import dao.ClientesDAO;
 import dao.FuncionariosDAO;
 import dao.VendasDAO;
+import dao.VendasProdutosDAO;
 import bean.JatClientes;
 import bean.JatFuncionarios;
+import bean.JatVendasProdutos;
 import bean.JatVendas;
 import java.util.ArrayList;
 
@@ -23,6 +25,7 @@ public class JDlgVendas extends javax.swing.JDialog {
     
      ControllerVendasProdutos controllerVendasProdutos;
       boolean pesquisado = false;
+      boolean incluido = false;
       private boolean incluir;
 
     /**
@@ -62,6 +65,11 @@ public class JDlgVendas extends javax.swing.JDialog {
         vendas.setJatFormaPagamento(jCboFormaDePagamento.getSelectedIndex());
         vendas.setJatDataVenda(Util.strToDate(jFmtData.getText()));
         vendas.setJatValorVenda(Util.strToDouble(jTxtTotal.getText()));
+        
+        if (jFmtData.getText().trim().equals("  /  /    ")) {
+            vendas.setJatDataVenda(Util.strToDate(jFmtData.getText()));
+        }
+        
         return vendas;
     }
     
@@ -71,9 +79,9 @@ public class JDlgVendas extends javax.swing.JDialog {
         jCboTipo.setSelectedIndex(vendas.getJatTipoVenda());
         jFmtData.setText(Util.dateToStr(vendas.getJatDataVenda()));
         jTxtTotal.setText(Util.doubleToStr(vendas.getJatValorVenda()));
-        
-        
-    
+        VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+        List lista = (List) vendasProdutosDAO.listProdutos(vendas);
+        controllerVendasProdutos.setList(lista);
     }
     
 
@@ -213,7 +221,7 @@ public class JDlgVendas extends javax.swing.JDialog {
 
         jLabel8.setText("Tipo");
 
-        jCboFormaDePagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Credio", "Debito", "Dinheiro" }));
+        jCboFormaDePagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Credito", "Debito", "Dinheiro" }));
         jCboFormaDePagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboFormaDePagamentoActionPerformed(evt);
@@ -268,7 +276,9 @@ public class JDlgVendas extends javax.swing.JDialog {
                                 .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCboFormaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jBtnIncluir)
@@ -285,18 +295,13 @@ public class JDlgVendas extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnIncluirProd)
-                            .addComponent(jBtnAlterarProd)
-                            .addComponent(jBtnExcluirProd))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jCboFormaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jBtnIncluirProd)
+                    .addComponent(jBtnAlterarProd)
+                    .addComponent(jBtnExcluirProd))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +321,8 @@ public class JDlgVendas extends javax.swing.JDialog {
                     .addComponent(jFmtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCboFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCboFormaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -336,9 +342,7 @@ public class JDlgVendas extends javax.swing.JDialog {
                         .addComponent(jBtnAlterarProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnExcluirProd)
-                        .addGap(38, 38, 38)
-                        .addComponent(jCboFormaDePagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jBtnIncluir)
@@ -381,26 +385,33 @@ public class JDlgVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-           if (pesquisado == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else {
-                Util.perguntar("Você deseja excluir?");
-       }
-   Util.limpar(jTxtCodigo, jCboFormaDePagamento, jCboTipo, jCboClientes,jCboFuncionario, jFmtData, jTxtTotal);        jTxtCodigo.grabFocus();
+         if (Util.perguntar("Deseja Excluir?")) {
+            VendasDAO vendasDAO = new VendasDAO();
+            VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
+            JatVendas vendas = viewBean();
+            for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
+               JatVendasProdutos vendasProdutos = controllerVendasProdutos.getBean(ind);
+                vendasProdutosDAO.delete(vendasProdutos);
+            }
+            vendasDAO.delete(vendas);
+        }
+
+        Util.limpar(jTxtCodigo, jFmtData, jCboClientes, jCboFuncionario, jCboFormaDePagamento,jTxtTotal);
+        controllerVendasProdutos.setList(new ArrayList());
+        jTxtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
      
-       VendasDAO vendasDAO = new VendasDAO();
-            if (incluir == true){
-               vendasDAO.insert(viewBean());
-            }else{
-                vendasDAO.update(viewBean());
-            }
+  VendasDAO vendasDAO = new VendasDAO();
+        if (incluir == true) {
             vendasDAO.insert(viewBean());
-        Util.habilitar(true, jTxtCodigo, jTxtTotal,jFmtData, jCboFuncionario, jCboClientes,jCboFormaDePagamento,jCboTipo,jBtnConfirmar,jBtnCancelar);
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
+        } else {
+            vendasDAO.update(viewBean());
+        }
+        Util.habilitar(false, jTxtCodigo, jFmtData, jCboClientes, jCboFormaDePagamento,jCboFuncionario, jTxtTotal, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jFmtData, jCboClientes, jCboFormaDePagamento,jCboFuncionario, jTxtTotal, jTable1);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
@@ -408,6 +419,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
         jDlgVendasProdutos.setTelaAnterior(this);
         jDlgVendasProdutos.setVisible(true);
+        incluido = true;
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
@@ -418,7 +430,11 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
-         if (Util.perguntar("Deseja excluir o produto ?")== true) {
+           if (incluido == false) {
+            Util.mensagem("Você precisa incluir um produto primeiro");
+           }
+         else {
+               Util.perguntar("Deseja excluir o produto ?");
             int ind = jTable1.getSelectedRow();
             controllerVendasProdutos.removeBean(ind);
         }

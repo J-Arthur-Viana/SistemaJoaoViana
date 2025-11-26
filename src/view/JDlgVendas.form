@@ -67,6 +67,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jTxtTotal" min="-2" pref="72" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jCboFormaDePagamento" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -89,22 +91,14 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="452" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jBtnIncluirProd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnAlterarProd" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnExcluirProd" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jCboFormaDePagamento" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jBtnIncluirProd" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBtnAlterarProd" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBtnExcluirProd" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -130,6 +124,7 @@
                   <Component id="jCboClientes" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jCboFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCboFormaDePagamento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -152,9 +147,7 @@
                       <Component id="jBtnAlterarProd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBtnExcluirProd" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jCboFormaDePagamento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="123" max="32767" attributes="0"/>
+                      <EmptySpace pref="181" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jBtnIncluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -356,7 +349,7 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Credio"/>
+            <StringItem index="0" value="Credito"/>
             <StringItem index="1" value="Debito"/>
             <StringItem index="2" value="Dinheiro"/>
           </StringArray>

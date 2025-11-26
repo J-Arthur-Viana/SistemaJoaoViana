@@ -128,6 +128,18 @@ public class JatProdutos  implements java.io.Serializable {
     public String toString() {
         return this.jatNome;
     }
+    
+    @Override
+    public boolean equals( Object object){
+        if(object instanceof JatProdutos) {
+            JatProdutos jatProdutos = (JatProdutos)object;
+            if(this.getJatIdProdutos()== jatProdutos.getJatIdProdutos()){
+                return true;
+            }
+    }
+
+        return false;
+    }
 
 }
 
