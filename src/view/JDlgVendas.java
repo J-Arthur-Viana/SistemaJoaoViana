@@ -82,8 +82,17 @@ public class JDlgVendas extends javax.swing.JDialog {
         VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
         List lista = (List) vendasProdutosDAO.listProdutos(vendas);
         controllerVendasProdutos.setList(lista);
+        Total();
     }
-    
+    public void Total() {
+        double soma = 0.0;
+        int rows = jTable1.getRowCount();
+        for (int i = 0; i < rows; i++) {
+            JatVendasProdutos vendProd = controllerVendasProdutos.getBean(i);
+            soma += vendProd.getJatQuantidade() * vendProd.getJatValorUnitario();
+        }
+        jTxtTotal.setText(Util.doubleToStr(soma));
+    }
 
     
     /**
@@ -370,9 +379,9 @@ public class JDlgVendas extends javax.swing.JDialog {
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
 //
-    Util.habilitar(true, jTxtCodigo, jCboClientes, jCboFuncionario, jCboFormaDePagamento, jCboTipo,jFmtData,jTxtTotal, jBtnConfirmar, jBtnCancelar,jBtnIncluirProd,jBtnExcluirProd,jBtnAlterarProd);
+    Util.habilitar(true, jTxtCodigo, jCboClientes, jCboFuncionario, jCboFormaDePagamento, jCboTipo,jFmtData, jBtnConfirmar, jBtnCancelar,jBtnIncluirProd,jBtnExcluirProd,jBtnAlterarProd);
     Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
-     Util.limpar(jTxtCodigo, jCboFormaDePagamento, jCboTipo, jCboClientes,jCboFuncionario, jFmtData, jTxtTotal);        jTxtCodigo.grabFocus();
+     Util.limpar(jTxtCodigo, jCboFormaDePagamento, jCboTipo, jCboClientes,jCboFuncionario, jFmtData, jTxtTotal, jTxtTotal);        jTxtCodigo.grabFocus();
       incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
