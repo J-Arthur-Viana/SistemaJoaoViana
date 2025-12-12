@@ -8,6 +8,7 @@ package view;
 import bean.JatClientes;
 import dao.ClientesDAO;
 import java.util.List;
+import tools.Util;
 
 /**
  *
@@ -104,10 +105,13 @@ public class JDlgClientesPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
         JatClientes clientes =  controllerClientes.getBean( jTable1.getSelectedRow() );
         jDlgClientes.beanView(clientes);
         this.setVisible(false);
+    }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

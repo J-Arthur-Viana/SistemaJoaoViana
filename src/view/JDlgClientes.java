@@ -449,20 +449,28 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+        if(pesquisado == false){
+            Util.mensagem("Pesquise um cliente primeiro");
+        }else{
         Util.habilitar(true,  jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jTxtNome, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluir = false;
+        pesquisado = false;
+        }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
-          if (pesquisado == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else {
-                Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo); 
-          }
+        if(pesquisado == true){
+        if (Util.perguntar("Deseja excluir o registro ?") == true) {
+            ClientesDAO clientesDAO = new ClientesDAO();
+            clientesDAO.delete(viewBean());
+        Util.limpar(jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jTxtNome, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo);
+         pesquisado = false;
+        }
+        }
+        else{
+            Util.mensagem("Você precisa pesquisar um Cliente primeiro");
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -476,6 +484,7 @@ public class JDlgClientes extends javax.swing.JDialog {
             }
         Util.habilitar(true,jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo,jBtnConfirmar,jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo);
         
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 

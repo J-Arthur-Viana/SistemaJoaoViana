@@ -15,7 +15,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
      */
     public JFrmPrincipal() {
         initComponents();
-        
+        setTitle("Sistema de compras de peças de informática");
+        setExtendedState(MAXIMIZED_BOTH);
          setExtendedState(MAXIMIZED_BOTH);
          
     }
@@ -39,7 +40,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuSair = new javax.swing.JMenuItem();
         jMnuMovimento = new javax.swing.JMenu();
         jMnuVendas = new javax.swing.JMenuItem();
-        jMnuVendasProdutos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -126,16 +126,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMnuMovimento.add(jMnuVendas);
 
-        jMnuVendasProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuVendasProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/2652218.png"))); // NOI18N
-        jMnuVendasProdutos.setText("Vendas Produtos");
-        jMnuVendasProdutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnuVendasProdutosActionPerformed(evt);
-            }
-        });
-        jMnuMovimento.add(jMnuVendasProdutos);
-
         jMenuBar1.add(jMnuMovimento);
 
         setJMenuBar(jMenuBar1);
@@ -186,11 +176,6 @@ jDlgProdutos.setVisible(true);
          jDlgFuncionarios.setVisible(true);
     }//GEN-LAST:event_jMnuFuncionariosActionPerformed
 
-    private void jMnuVendasProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasProdutosActionPerformed
-        JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(this, true);
-         jDlgVendasProdutos.setVisible(true);
-    }//GEN-LAST:event_jMnuVendasProdutosActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -237,7 +222,6 @@ jDlgProdutos.setVisible(true);
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
     private javax.swing.JMenuItem jMnuVendas;
-    private javax.swing.JMenuItem jMnuVendasProdutos;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

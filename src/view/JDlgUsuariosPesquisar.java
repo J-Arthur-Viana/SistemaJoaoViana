@@ -9,6 +9,7 @@ import dao.UsuariosDAO;
 import bean.JatUsuarios;
 import view.ControllerUsuarios;
 import java.util.List;
+import tools.Util;
 
 /**
  *
@@ -101,9 +102,13 @@ public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
+        if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
         JatUsuarios usuarios = controllerUsuarios.getBean(jTable1.getSelectedRow());
         jDlgUsuarios.beanView(usuarios);
         this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

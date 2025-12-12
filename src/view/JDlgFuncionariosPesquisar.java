@@ -8,6 +8,7 @@ package view;
 import bean.JatFuncionarios;
 import dao.FuncionariosDAO;
 import java.util.List;
+import tools.Util;
 
 /**
  *
@@ -104,10 +105,13 @@ public class JDlgFuncionariosPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
+        if (jTable1.getSelectedRow() == -1){
+            Util.mensagem("Selecione uma liha");
+        } else {
         JatFuncionarios funcionarios =  controllerFuncionarios.getBean( jTable1.getSelectedRow() );
         jDlgFuncionarios.beanView(funcionarios);
         this.setVisible(false);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

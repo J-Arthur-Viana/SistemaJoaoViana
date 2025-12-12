@@ -292,20 +292,30 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+         if (pesquisado == false) {
+            Util.mensagem("Você precisa pesquisar um funcionário primeiro");
+        } else{
         Util.habilitar(true, jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluir = false;
+        pesquisado = false;
+         }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
-         if (pesquisado == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else { 
-             Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno, jFmtCpf, jFmtSalario);  
-    }
+        if(pesquisado == true){
+        if (Util.perguntar("Deseja excluir o registro ?") == true) {
+            FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+            funcionariosDAO.delete(viewBean());
+       
+        Util.limpar(jTxtCodigo,jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario);
+        pesquisado = false;
+         }
+        
+        
+        }else{
+                Util.mensagem("Você precisa pesquisar um funcionário primeiro ");
+                }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -318,8 +328,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                 funcionariosDAO.update(viewBean());
             }
          
-        Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jBtnConfirmar, jBtnCancelar, jFmtSalario);
+        Util.habilitar(true, jTxtCodigo,jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo,jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario );
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 

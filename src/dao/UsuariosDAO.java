@@ -60,4 +60,17 @@ public class UsuariosDAO extends AbstractDAO{
         return lista;
     }
     
+       public boolean listLogin(String user, String pass) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JatUsuarios.class);
+        criteria.add(Restrictions.eq("jatApelido", user));
+        criteria.add(Restrictions.eq("jatSenha", pass));
+
+        List resultado = criteria.list();
+        session.getTransaction().commit();
+
+        return !resultado.isEmpty();
+    }
+
+    
 }

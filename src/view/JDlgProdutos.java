@@ -276,20 +276,31 @@ public class JDlgProdutos extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+       if(pesquisado == true){
         Util.habilitar(true, jTxtNome, jTxtModelo,jFmtValor, jTxtTipo, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluir = false;
+        pesquisado = false;
+       }
+       else{
+       Util.mensagem("Pesquise um produto primeiro");
+       }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if (pesquisado == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else { 
-             Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo,jTxtTipo); 
-        }
+       if (pesquisado) { 
+    if (Util.perguntar("Deseja excluir o registro ?")) {
+        
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        produtosDAO.delete(viewBean());
+        
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtModelo, jFmtValor, jTxtTipo, jFmtGarantia, jChbAtivo);
+         pesquisado = false;
+    }
+} else {
+    Util.mensagem("Pesquise um produto primeiro");
+}
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -304,7 +315,7 @@ public class JDlgProdutos extends javax.swing.JDialog {
             
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
+        Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

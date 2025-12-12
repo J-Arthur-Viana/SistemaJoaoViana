@@ -121,6 +121,11 @@ public class JDlgUsuarios extends javax.swing.JDialog {
 
         jLabel4.setText("CPF");
 
+        try {
+            jFmtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFmtCpf.setText("   .   .   -  ");
 
         jLabel5.setText("Data de Nascimento");
@@ -130,7 +135,6 @@ public class JDlgUsuarios extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFmtDataDeNascimento.setText("  /  /    ");
 
         jLabel6.setText("Senha");
 
@@ -308,21 +312,29 @@ public class JDlgUsuarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+     if(pesquisado == true){
         Util.habilitar(true, jTxtNome, jTxtApelido,jFmtCpf, jCboNivel
                 , jFmtDataDeNascimento, jChbAtivo, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluir = false;
+        pesquisado = false;
+     }else {
+         Util.mensagem("Pesquise um usuários primeiro");
+     }
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
-         if (pesquisado == false) {
-            Util.mensagem("Você precisa pesquisar um usuário primeiro");
-        } else { 
-             Util.perguntar("Você deseja excluir?");
-        Util.limpar(jTxtNome, jTxtCodigo, jTxtNome, jTxtApelido, jFmtDataDeNascimento, jFmtCpf, jCboNivel, jChbAtivo, jPwfSenha);  
-         }
+        if (pesquisado == true){
+        if (  Util.perguntar("Deseja excluir o registro ?") == true ) {
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(viewBean());
+       
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCboNivel, jFmtCpf, jChbAtivo, jFmtDataDeNascimento, jPwfSenha);
+        pesquisado = false;
+        }
+        } else{
+                Util.mensagem("Você precisa pesquisar um usuário primeiro ");
+                }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
 
@@ -338,6 +350,7 @@ public class JDlgUsuarios extends javax.swing.JDialog {
             //usuariosDAO.insert(usuarios);
             Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataDeNascimento, jPwfSenha, jCboNivel, jChbAtivo, jBtnConfirmar, jBtnCancelar);
             Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
+            Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCboNivel, jFmtCpf, jChbAtivo, jFmtDataDeNascimento, jPwfSenha);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
