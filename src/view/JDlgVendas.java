@@ -74,11 +74,11 @@ public class JDlgVendas extends javax.swing.JDialog {
     }
     
     public void beanView(JatVendas vendas){
-        jTxtCodigo.setText(Util.intToStr(vendas.getJatIdVendas())); 
-        jCboFormaDePagamento.setSelectedIndex(vendas.getJatFormaPagamento());
-        jCboTipo.setSelectedIndex(vendas.getJatTipoVenda());
+        jTxtCodigo.setText(Util.intToStr(vendas.getJatIdVendas()));
         jFmtDataVenda.setText(Util.dateToStr(vendas.getJatDataVenda()));
         jTxtTotal.setText(Util.doubleToStr(vendas.getJatValorVenda()));
+        jCboClientes.setSelectedItem(vendas.getJatClientes());
+        jCboFuncionario.setSelectedItem(vendas.getJatFuncionarios());
         VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
         List lista = (List) vendasProdutosDAO.listProdutos(vendas);
         controllerVendasProdutos.setList(lista);
@@ -387,11 +387,12 @@ public class JDlgVendas extends javax.swing.JDialog {
     Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
      Util.limpar(jTxtCodigo, jCboFormaDePagamento, jCboTipo, jCboClientes,jCboFuncionario, jFmtDataVenda, jTxtTotal, jTxtTotal);        jTxtCodigo.grabFocus();
       incluir = true;
+      controllerVendasProdutos.setList(new ArrayList());
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
        if(pesquisado == true){
-        Util.habilitar(true, jFmtDataVenda, jTxtTotal, jCboFormaDePagamento, jCboTipo, jBtnConfirmar, jBtnCancelar,jBtnIncluirProd,jBtnExcluirProd,jBtnAlterarProd);
+        Util.habilitar(true, jFmtDataVenda,jCboFuncionario,jCboClientes, jCboFormaDePagamento, jCboTipo, jBtnConfirmar, jBtnCancelar,jBtnIncluirProd,jBtnExcluirProd,jBtnAlterarProd);
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         jFmtDataVenda.grabFocus();
         incluir = false;
@@ -415,6 +416,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         Util.limpar(jTxtCodigo, jFmtDataVenda, jCboClientes, jCboFuncionario, jTxtTotal);
         controllerVendasProdutos.setList(new ArrayList());
         pesquisado = false;
+        
      }
        else{
          Util.mensagem("Pesuise uma venda primeiro");
@@ -443,6 +445,7 @@ public class JDlgVendas extends javax.swing.JDialog {
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jFmtDataVenda, jCboClientes, jCboFuncionario, jTxtTotal);
+        controllerVendasProdutos.setList(new ArrayList());
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
@@ -458,6 +461,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         JDlgVendasProdutos jDlgPedidosProdutos = new JDlgVendasProdutos(null, true);
         jDlgPedidosProdutos.setTelaAnterior(this);
         jDlgPedidosProdutos.setVisible(true);
+        Total();
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
@@ -469,6 +473,7 @@ public class JDlgVendas extends javax.swing.JDialog {
               if (Util.perguntar("Deseja Excluir?") == true) {
             int rowindex = jTable1.getSelectedRow();
             controllerVendasProdutos.removeBean(rowindex);
+            Total();
         }
      
         }
@@ -478,6 +483,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         Util.habilitar(false, jTxtCodigo, jFmtDataVenda,jCboClientes, jCboFuncionario, jCboFormaDePagamento,jCboTipo, jBtnConfirmar, jBtnCancelar,jTxtTotal);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jFmtDataVenda,jCboClientes, jCboFuncionario, jCboFormaDePagamento,jCboTipo);
+        controllerVendasProdutos.setList(new ArrayList());
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jCboFormaDePagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboFormaDePagamentoActionPerformed
