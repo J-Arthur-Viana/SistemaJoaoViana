@@ -50,6 +50,34 @@ public class VendasDAO extends AbstractDAO{
         session.getTransaction().commit();
         return lista;
     }
+    
+    public Object listFuncionario(String funcionario) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JatVendas.class).createAlias("jatFuncionarios", "funcionarios"); 
+        criteria.add(Restrictions.like("funcionarios.jatNome", "%" + funcionario + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public Object listTotal(double total) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JatVendas.class);
+        criteria.add(Restrictions.ge("jatValorVenda", total));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+   public Object listFuncionarioTotal(String nome , double total) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JatVendas.class).createAlias("jatFuncionarios", "funcionarios"); 
+        criteria.add(Restrictions.like("funcionarios.jatNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("jatTotal", total));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public Object listAll() {

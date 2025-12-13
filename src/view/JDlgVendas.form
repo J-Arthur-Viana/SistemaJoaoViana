@@ -41,8 +41,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jFmtDataVenda" min="-2" pref="67" max="-2" attributes="0"/>
                                   <Component id="jCboTipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFmtDataVenda" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
