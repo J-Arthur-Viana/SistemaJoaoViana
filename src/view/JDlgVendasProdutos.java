@@ -37,8 +37,14 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         }
     }
     
-    public void setTelaAnterior(JDlgVendas jDlgVendas){
+    public void setTelaAnterior(JDlgVendas jDlgVendas, JatVendasProdutos jatVendasProdutos){
         this.jDlgVendas = jDlgVendas;
+        incluir = true;
+        if(jatVendasProdutos != null){
+            incluir = false;
+            jCboProdutos.setSelectedItem(jatVendasProdutos.getJatProdutos());
+            jTxtQuantidade.setText(Util.intToStr(jatVendasProdutos.getJatQuantidade()));
+        }
     }
 
     /**
@@ -169,21 +175,15 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-       JatVendasProdutos vendasProdutos = new JatVendasProdutos();        
-       vendasProdutos.setJatProdutos((JatProdutos) jCboProdutos.getSelectedItem());
-        vendasProdutos.setJatQuantidade(Util.strToInt( jTxtQuantidade.getText()) );
-        vendasProdutos.setJatValorUnitario(Util.strToDouble( jTxtValorUnitario.getText()) );
-        jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
-        if (incluir == true) {
-           jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
-        } else {
-             int linhaSelecionada = jDlgVendas.getjTable1().getSelectedRow();
-        if (linhaSelecionada != -1) {
-            // Remove e adiciona o novo
-            jDlgVendas.controllerVendasProdutos.removeBean(linhaSelecionada);
-            jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
+        JatVendasProdutos jatVendasProdutos = new JatVendasProdutos();
+        jatVendasProdutos.setJatProdutos((JatProdutos) jCboProdutos.getSelectedItem());
+        jatVendasProdutos.setJatQuantidade(Util.strToInt(jTxtQuantidade.getText()));
+        jatVendasProdutos.setJatValorUnitario(Util.strToDouble(jTxtValorUnitario.getText()));
+        if(incluir == false) {
+            jDlgVendas.controllerVendasProdutos.removeBean(jDlgVendas.getjTable1().getSelectedRow()); 
         }
-        }        
+        jDlgVendas.controllerVendasProdutos.addBean(jatVendasProdutos);
+        
         setVisible(false);
         
     }//GEN-LAST:event_jBtnOkActionPerformed

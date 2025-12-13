@@ -15,9 +15,9 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ControllerVendasProdutos extends AbstractTableModel {
 
-    private List<JatVendasProdutos> lstVenProd;
+    private List  lstVenProd;
 
-     public void setList(List<JatVendasProdutos> lstVendasProdutos) {
+    public void setList(List lstVendasProdutos) {
         this.lstVenProd = lstVendasProdutos;
         this.fireTableDataChanged();
     }
@@ -37,13 +37,10 @@ public class ControllerVendasProdutos extends AbstractTableModel {
     }
 
     @Override
-    public int getRowCount() {
-        if (lstVenProd == null) {
-            return 0;
-        }
-        return lstVenProd.size();
-    }
+   public int getRowCount() {
+         return lstVenProd.size();
 
+    }
     @Override
     public int getColumnCount() {
         return 5;

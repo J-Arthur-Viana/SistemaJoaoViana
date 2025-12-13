@@ -450,17 +450,23 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
-        JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jDlgVendasProdutos.setTelaAnterior(this);
+         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        jDlgVendasProdutos.setTelaAnterior(this, null);
         jDlgVendasProdutos.setVisible(true);
         incluido = true;
         Total();
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
-        JDlgVendasProdutos jDlgPedidosProdutos = new JDlgVendasProdutos(null, true);
-        jDlgPedidosProdutos.setTelaAnterior(this);
-        jDlgPedidosProdutos.setVisible(true);
+     if (jTable1.getSelectedRow() == -1) {   
+            Util.mensagem("Selecione um Produto antes de alterar!");
+            return;
+        }
+        
+        JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        JatVendasProdutos jatVendasProdutos = controllerVendasProdutos.getBean(jTable1.getSelectedRow());
+        jDlgVendasProdutos.setTelaAnterior(this, jatVendasProdutos);
+        jDlgVendasProdutos.setVisible(true);
         Total();
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
