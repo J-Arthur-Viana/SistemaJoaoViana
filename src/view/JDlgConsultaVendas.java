@@ -11,7 +11,7 @@ import tools.Util;
 
 /**
  *
- * @author Marcos
+ * @author pc
  */
 public class JDlgConsultaVendas extends javax.swing.JDialog {
 

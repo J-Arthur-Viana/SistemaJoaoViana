@@ -17,6 +17,7 @@ import tools.Util;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 
 /**
@@ -93,6 +94,9 @@ public class JDlgVendas extends javax.swing.JDialog {
         jTxtTotal.setText(Util.doubleToStr(soma));
     }
 
+     public JTable getjTable1() {
+        return jTable1;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -373,6 +377,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         jDlgVendasPesquisar.setTelaAnterior(this);
        jDlgVendasPesquisar.setVisible(true);
        pesquisado = true;
+       
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -386,7 +391,7 @@ public class JDlgVendas extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
        if(pesquisado == true){
-        Util.habilitar(true, jFmtDataVenda, jTxtTotal, jCboFormaDePagamento, jCboTipo, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jFmtDataVenda, jTxtTotal, jCboFormaDePagamento, jCboTipo, jBtnConfirmar, jBtnCancelar,jBtnIncluirProd,jBtnExcluirProd,jBtnAlterarProd);
         Util.habilitar(false, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
         jFmtDataVenda.grabFocus();
         incluir = false;
@@ -397,29 +402,23 @@ public class JDlgVendas extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        if (pesquisado == true){ 
-        if (Util.perguntar("Deseja Excluir?")) {
+     if(pesquisado == true){
+        if (Util.perguntar("Deseja excluir ?") == true) {
             VendasDAO vendasDAO = new VendasDAO();
             VendasProdutosDAO vendasProdutosDAO = new VendasProdutosDAO();
-            JatVendas vendas = viewBean();
             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
-               JatVendasProdutos vendasProdutos = controllerVendasProdutos.getBean(ind);
-                vendasProdutosDAO.delete(vendasProdutos);
-           
-            vendasDAO.delete(vendas);
-            
-        Util.limpar(jTxtCodigo, jFmtDataVenda, jCboClientes, jCboFuncionario, jCboFormaDePagamento,jTxtTotal);
-        controllerVendasProdutos.setList(new ArrayList());
-        jTxtCodigo.grabFocus();
-        pesquisado = false;
+                JatVendasProdutos vendasProdutos = controllerVendasProdutos.getBean(ind);
+               vendasProdutosDAO.delete(vendasProdutos);
             }
-        }   
+            vendasDAO.delete(viewBean());
         }
-        else{
-        Util.mensagem("Pesquise uma venda primeiro");
-        }
-
-       
+        Util.limpar(jTxtCodigo, jFmtDataVenda, jCboClientes, jCboFuncionario, jTxtTotal);
+        controllerVendasProdutos.setList(new ArrayList());
+        pesquisado = false;
+     }
+       else{
+         Util.mensagem("Pesuise uma venda primeiro");
+     }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -452,6 +451,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         jDlgVendasProdutos.setTelaAnterior(this);
         jDlgVendasProdutos.setVisible(true);
         incluido = true;
+        Total();
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
@@ -466,9 +466,11 @@ public class JDlgVendas extends javax.swing.JDialog {
             Util.mensagem("Você precisa incluir um produto primeiro");
            }
          else {
-               Util.perguntar("Deseja excluir o produto ?");
-            int ind = jTable1.getSelectedRow();
-            controllerVendasProdutos.removeBean(ind);
+              if (Util.perguntar("Deseja Excluir?") == true) {
+            int rowindex = jTable1.getSelectedRow();
+            controllerVendasProdutos.removeBean(rowindex);
+        }
+     
         }
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 

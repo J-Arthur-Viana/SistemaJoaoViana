@@ -18,6 +18,7 @@ import tools.Util;
 public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     JDlgVendas jDlgVendas;
+    boolean incluir; 
     /**
      * Creates new form JDlgPedidosProdutos
      */
@@ -168,15 +169,21 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        JatVendasProdutos vendasProdutos = new JatVendasProdutos();
-        vendasProdutos.setJatProdutos((JatProdutos) jCboProdutos.getSelectedItem());
-        vendasProdutos.setJatQuantidade(Util.strToInt(jTxtQuantidade.getText()));
-        vendasProdutos.setJatValorUnitario(Util.strToDouble(jTxtValorUnitario.getText()));
+       JatVendasProdutos vendasProdutos = new JatVendasProdutos();        
+       vendasProdutos.setJatProdutos((JatProdutos) jCboProdutos.getSelectedItem());
+        vendasProdutos.setJatQuantidade(Util.strToInt( jTxtQuantidade.getText()) );
+        vendasProdutos.setJatValorUnitario(Util.strToDouble( jTxtValorUnitario.getText()) );
         jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
-        if (jDlgVendas != null) {
-            jDlgVendas.Total();
+        if (incluir == true) {
+           jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
+        } else {
+             int linhaSelecionada = jDlgVendas.getjTable1().getSelectedRow();
+        if (linhaSelecionada != -1) {
+            // Remove e adiciona o novo
+            jDlgVendas.controllerVendasProdutos.removeBean(linhaSelecionada);
+            jDlgVendas.controllerVendasProdutos.addBean(vendasProdutos);
         }
-        
+        }        
         setVisible(false);
         
     }//GEN-LAST:event_jBtnOkActionPerformed

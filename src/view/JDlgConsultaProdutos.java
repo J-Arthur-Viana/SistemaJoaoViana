@@ -13,7 +13,7 @@ import view.JDlgUsuarios;
 
 /**
  *
- * @author Marcos
+ * @author pc
  */
 public class JDlgConsultaProdutos extends javax.swing.JDialog {
 

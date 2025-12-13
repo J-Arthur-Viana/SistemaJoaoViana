@@ -5,17 +5,17 @@
  */
 package dao;
 
-import bean.JatVendasProdutos;
 import bean.JatVendas;
+import bean.JatVendasProdutos;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author pc
+ * @author u11200121120
  */
-public class VendasProdutosDAO extends AbstractDAO{
+public class VendasProdutosDAO extends AbstractDAO {
 
     @Override
     public void insert(Object object) {
@@ -34,12 +34,25 @@ public class VendasProdutosDAO extends AbstractDAO{
     }
 
     @Override
-    public void delete(Object object) {
+public void delete(Object object) {
+    session.beginTransaction();
+    Object attached = session.merge(object); // reatacha o objeto à Session atual
+    session.delete(attached);
+    session.getTransaction().commit();
+}
+
+    public void deleteProdutos(JatVendas vendas) {
+        //listar todos os produtos do pedido
+        List lista = (List) listProdutos(vendas);
+        //deleta  a lista acima 
         session.beginTransaction();
-        session.flush();
-        session.clear();
-        session.delete(object);
-        session.getTransaction().commit();
+        for (int i = 0; i < lista.size(); i++) {
+            JatVendasProdutos vendasProdutos = (JatVendasProdutos) lista.get(i);
+            //delete(pedidosProdutos);
+            session.flush();
+            session.clear();
+            session.delete(vendasProdutos);
+        }
     }
 
     @Override
@@ -47,6 +60,15 @@ public class VendasProdutosDAO extends AbstractDAO{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(JatVendasProdutos.class);
         criteria.add(Restrictions.eq("jatIdVendasProdutos", codigo));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listProdutos(JatVendas vendas) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(JatVendasProdutos.class);
+        criteria.add(Restrictions.eq("jatVendas", vendas));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
@@ -60,13 +82,4 @@ public class VendasProdutosDAO extends AbstractDAO{
         session.getTransaction().commit();
         return lista;
     }
-       public Object listProdutos(JatVendas venda) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(JatVendasProdutos.class);
-        criteria.add(Restrictions.eq("jatVendas", venda));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
-    }
-    
 }

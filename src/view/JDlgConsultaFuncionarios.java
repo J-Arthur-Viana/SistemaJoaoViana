@@ -13,7 +13,7 @@ import view.JDlgFuncionarios;
 
 /**
  *
- * @author Marcos
+ * @author pc
  */
 public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
 
