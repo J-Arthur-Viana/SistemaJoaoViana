@@ -46,7 +46,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jTxtCodigo.setText(Util.intToStr(funcionarios.getJatIdFuncionario())); 
         jTxtNome.setText(funcionarios.getJatNome());
         jTxtEndereco.setText(funcionarios.getJatEndereco());
-        jFmtCpf.setText(funcionarios.getJatCpf());
+        jCboTurno.setSelectedIndex(funcionarios.getJatTurno());
         jFmtTelefone.setText(funcionarios.getJatTelefone());
         jFmtCpf.setText(funcionarios.getJatCpf());
         jFmtSalario.setText(Util.doubleToStr(funcionarios.getJatSalario()));
@@ -331,7 +331,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         Util.habilitar(true, jTxtCodigo,jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario, jBtnConfirmar, jBtnCancelar, jFmtSalario);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo,jTxtNome, jTxtEndereco,jFmtTelefone, jCboTurno,jFmtCpf, jFmtSalario );
-
+        Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnPesquisar,jBtnExcluir );
+        Util.habilitar(false,jBtnConfirmar,jBtnCancelar );
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

@@ -316,6 +316,8 @@ public class JDlgProdutos extends javax.swing.JDialog {
         Util.habilitar(true, jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtNome, jTxtCodigo, jTxtModelo,jFmtValor, jFmtGarantia, jChbAtivo, jBtnConfirmar, jBtnCancelar, jTxtTipo);
+        Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnPesquisar,jBtnExcluir );
+        Util.habilitar(false,jBtnConfirmar,jBtnCancelar );
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

@@ -351,6 +351,8 @@ public class JDlgUsuarios extends javax.swing.JDialog {
             Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataDeNascimento, jPwfSenha, jCboNivel, jChbAtivo, jBtnConfirmar, jBtnCancelar);
             Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnIncluir, jBtnPesquisar);
             Util.limpar(jTxtCodigo, jTxtNome, jTxtApelido, jCboNivel, jFmtCpf, jChbAtivo, jFmtDataDeNascimento, jPwfSenha);
+            Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnPesquisar,jBtnExcluir );
+        Util.habilitar(false,jBtnConfirmar,jBtnCancelar );
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

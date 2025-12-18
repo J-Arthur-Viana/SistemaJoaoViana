@@ -485,7 +485,8 @@ public class JDlgClientes extends javax.swing.JDialog {
         Util.habilitar(true,jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo,jBtnConfirmar,jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtCodigo, jTxtApelido,jFmtCpf, jCboNivel, jTxtEndereco,jTxtBairro,jTxtEmail,jPwfSenha, jFmtTelefone ,jTXtCidade,jFmtCep, jFmtDataDeCadastro, jFmtDataDeNascimento, jChbAtivo);
-        
+        Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnPesquisar,jBtnExcluir );
+        Util.habilitar(false,jBtnConfirmar,jBtnCancelar );
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

@@ -446,6 +446,8 @@ public class JDlgVendas extends javax.swing.JDialog {
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jFmtDataVenda, jCboClientes, jCboFuncionario, jTxtTotal);
         controllerVendasProdutos.setList(new ArrayList());
+        Util.habilitar(true,jBtnIncluir, jBtnAlterar, jBtnPesquisar,jBtnExcluir );
+        Util.habilitar(false,jBtnConfirmar,jBtnCancelar );
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
